@@ -4,18 +4,16 @@ import streamlit as st
 import pydeck as pdk
 import geocoder
 from api_calls import *
-
-# token = 'pk.eyJ1IjoiY2FybGt0IiwiYSI6ImNremswbGFxbzExbG8ybnBhMGc4aTRxNjAifQ.eO1vcS0sYVskxH8FWG_mnQ'
-
+from getLayers import getLayer
 
 st.title('How bikeable is Montreal?')
 layer_select = st.sidebar.container()
-    
+
+layers = getLayer()
 with layer_select:
     '## What would you like to see?'
-    bike_layer = st.checkbox('Bike lanes')
-    air_layer = st.checkbox('Air quality')
-    topo_layer = st.checkbox('Topography')
+    for key in layers:
+        st.checkbox(key, key=key)
 
 # Get user current location
 g = geocoder.ip('me')
@@ -29,13 +27,26 @@ if search != "":
     )
     [[lon, lat]] = list(res['center'].loc[res['place_name'] == query_options])
 
+# def reset_loc():
+#     lat, lon = g.latlng
+# st.button("Reset", on_click=reset_loc)
+
+map_container = st.empty()
+# col1, col2, col3 = map_container.columns([1,1,1])
+# button = col2.button("Get started")
+# if button:
+
 # Draw map
-st.pydeck_chart(pdk.Deck(
+map_container.pydeck_chart(pdk.Deck(
     map_style='mapbox://styles/mapbox/light-v9',
     initial_view_state=pdk.ViewState(
         latitude=lat,
         longitude=lon,
         zoom=11,
         pitch=0,
-    )
+    ),
+    layers=[
+        layer for layer_name, layer in layers.items()
+        if st.session_state[layer_name]
+    ]
 ))

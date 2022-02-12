@@ -5,7 +5,7 @@ import pydeck as pdk
 import requests
 import geocoder
 
-token = 'pk.eyJ1IjoiY2FybGt0IiwiYSI6ImNremswbGFxbzExbG8ybnBhMGc4aTRxNjAifQ.eO1vcS0sYVskxH8FWG_mnQ'
+# token = 'pk.eyJ1IjoiY2FybGt0IiwiYSI6ImNremswbGFxbzExbG8ybnBhMGc4aTRxNjAifQ.eO1vcS0sYVskxH8FWG_mnQ'
 
 
 '# How bikeable is Montreal?'

@@ -61,7 +61,7 @@ construction_layer = pdk.Layer(
     width_scale=10,
     width_min_pixels=1,
     get_path="path",
-    get_width=0.5,
+    get_width=1.5,
 )
 
 def getLayer():

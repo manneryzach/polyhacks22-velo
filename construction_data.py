@@ -25,7 +25,7 @@ for coords in root.iter('{http://www.opengis.net/kml/2.2}coordinates'):
         new_coord = [float(coords_s[i]), float(coords_s[i+1])]
         path.append(new_coord)
 
-    data_dict = {"name":str(counter),"color":[250,199,72],"path":path}
+    data_dict = {"name":str(counter),"color":[230,216,15],"path":path}
     new_json.append(data_dict)
 
     # print(coords_s)

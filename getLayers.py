@@ -49,10 +49,26 @@ normal_path_layer = pdk.Layer(
     get_width=0.5,
 )
 
+# Construction Layer
+
+construction_df = pd.read_json("./Data/construction.json")
+
+construction_layer = pdk.Layer(
+    type="PathLayer",
+    data=construction_df,
+    pickable=True,
+    get_color="color",
+    width_scale=10,
+    width_min_pixels=1,
+    get_path="path",
+    get_width=0.5,
+)
+
 def getLayer():
     layer_dict = {
         "REV": rev_layer,
         "bike_path": normal_path_layer,
-        "bixi_stations": bixi_stations_layer
+        "bixi_stations": bixi_stations_layer,
+        "construction_layer": construction_layer,
     }
     return layer_dict

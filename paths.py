@@ -2,11 +2,23 @@ import streamlit as st
 import pydeck as pdk
 import pandas as pd
 
-df = pd.read_json("./Data/REV_paths.json")
+rev_df = pd.read_json("./Data/REV_paths.json")
+normal_df = pd.read_json("./Data/normal_paths.json")
 
 rev_layer = pdk.Layer(
     type="PathLayer",
-    data=df,
+    data=rev_df,
+    pickable=True,
+    get_color="color",
+    width_scale=10,
+    width_min_pixels=1,
+    get_path="path",
+    get_width=0.5,
+)
+
+normal_layer = pdk.Layer(
+    type="PathLayer",
+    data=normal_df,
     pickable=True,
     get_color="color",
     width_scale=10,
@@ -28,6 +40,7 @@ st.pydeck_chart(pdk.Deck(
      ),
      layers=[
          rev_layer,
+         normal_layer,
      ],
  ))
 

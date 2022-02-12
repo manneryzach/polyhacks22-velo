@@ -17,5 +17,4 @@ with layer_select:
     air_layer = st.checkbox('Air quality')
     topo_layer = st.checkbox('Topography')
 
-map = st.map()
-map
+st.map()

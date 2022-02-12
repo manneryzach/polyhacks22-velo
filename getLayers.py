@@ -22,6 +22,27 @@ bixi_stations_layer = pdk.Layer(
     get_line_color=[0, 0, 0],
 )
 
+# Bike rack layer
+
+racks_df = pd.read_json("./Data/bike_racks.json")
+
+bike_racks_layer = pdk.Layer(
+    "ScatterplotLayer",
+    racks_df,
+    pickable=True,
+    opacity=1,
+    stroked=True,
+    filled=True,
+    radius_scale=1,
+    radius_min_pixels=2,
+    radius_max_pixels=10,
+    line_width_min_pixels=0.5,
+    get_position="coordinates",
+    get_radius=1,
+    get_fill_color=[0, 255, 0],
+    get_line_color=[0, 0, 0],
+)
+
 # Path layers
 
 rev_df = pd.read_json("./Data/REV_paths.json")
@@ -70,5 +91,6 @@ def getLayer():
         "bike_path": normal_path_layer,
         "bixi_stations": bixi_stations_layer,
         "construction_layer": construction_layer,
+        "bike_rack_layer":bike_racks_layer,
     }
     return layer_dict

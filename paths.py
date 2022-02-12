@@ -28,7 +28,7 @@ normal_layer = pdk.Layer(
 )
 
 # Test HTML
-# view_state = pdk.ViewState(latitude=37.782556, longitude=-122.3484867, zoom=10)
+# view_state = pdk.ViewState(latitude=45.5017, longitude=-73.5673, zoom=10)
 
 st.pydeck_chart(pdk.Deck(
      map_style='mapbox://styles/mapbox/light-v9',
@@ -45,5 +45,5 @@ st.pydeck_chart(pdk.Deck(
  ))
 
 # Test HTML
-# r = pdk.Deck(layers=[rev_layer], initial_view_state=view_state, tooltip={"text": "{name}"})
+# r = pdk.Deck(layers=[rev_layer,normal_layer], initial_view_state=view_state, tooltip={"text": "{name}"})
 # r.to_html("path_layer.html")

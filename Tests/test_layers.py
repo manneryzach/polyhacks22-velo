@@ -47,15 +47,15 @@ try:
     selected_layers = [
         layer for layer_name, layer in ALL_LAYERS.items()
         if st.sidebar.checkbox(layer_name, True)]
-    if selected_layers:
-        st.pydeck_chart(pdk.Deck(
-            map_style="mapbox://styles/mapbox/light-v9",
-            initial_view_state={"latitude": 37.76,
-                                "longitude": -122.4, "zoom": 11, "pitch": 50},
-            layers=selected_layers,
-        ))
-    else:
-        st.error("Please choose at least one layer above.")
+    # if selected_layers:
+    st.pydeck_chart(pdk.Deck(
+        map_style="mapbox://styles/mapbox/light-v9",
+        initial_view_state={"latitude": 37.76,
+                            "longitude": -122.4, "zoom": 11, "pitch": 50},
+        layers=selected_layers,
+    ))
+    # else:
+    #     st.error("Please choose at least one layer above.")
 except URLError as e:
     st.error("""
         **This demo requires internet access.**

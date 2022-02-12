@@ -8,7 +8,7 @@ color_code = {
 
 # Data treatment
 
-def clean_data(input_file, output_file):
+def clean_data_path(input_file, output_file):
 
     with open(input_file) as f:
         data = json.load(f)
@@ -40,5 +40,5 @@ def clean_data(input_file, output_file):
     with open(output_file, 'w') as f:
         json.dump(new_json, f)
 
-clean_data("./MTLData/reseau-express-velo.json", "./Data/REV_paths.json")
-clean_data("./MTLData/reseau_cyclable.json", "./Data/normal_paths.json")
+clean_data_path("./MTLData/reseau-express-velo.json", "./Data/REV_paths.json")
+clean_data_path("./MTLData/reseau_cyclable.json", "./Data/normal_paths.json")

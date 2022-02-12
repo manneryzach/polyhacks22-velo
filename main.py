@@ -6,8 +6,18 @@ import geocoder
 from api_calls import *
 from getLayers import getLayer
 
-st.title('How bikeable is Montreal?')
+# title_alignment="""
+# <style>
+# "How bikeable is Montreal?" {
+#   text-align: center
+# }
+# </style>
+# """
+st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>Montréal appartient-elle aux cyclistes?</h1>", unsafe_allow_html=True)
 layer_select = st.sidebar.container()
+
+img = open('img/bike.svg').read()
+layer_select.markdown(img, unsafe_allow_html=True)
 
 layers = getLayer()
 with layer_select:
@@ -19,13 +29,29 @@ with layer_select:
 g = geocoder.ip('me')
 lat, lon = g.latlng
 
-search = st.sidebar.text_input('Search location:')
-if search != "":
-    res = query_location(search, lat, lon)
-    query_options = st.sidebar.selectbox(
-        "", res
+search = st.sidebar.empty()
+query = search.text_input('Search location:', value="--", key="query")
+
+if query != "--":
+    res = query_location(query, lat, lon)
+    # Add default option
+    df = res.append({'place_name':"--", 'center': [lon, lat]}, ignore_index=True)
+
+    query = search.text_input('Search location:', value="--", key="query2")
+
+    query_options = search.selectbox(
+        'Select location:', df, 
+        key="query_options"
     )
-    [[lon, lat]] = list(res['center'].loc[res['place_name'] == query_options])
+    st.write(query_options)
+    st.write(query)
+    # st.stop()
+
+    [[lon, lat]] = df['center'].loc[df['place_name'] == query_options]
+
+    if query_options == "--":
+        query = search.text_input('Search location:', value="--", key="query3")
+
 
 # def reset_loc():
 #     lat, lon = g.latlng
@@ -38,7 +64,7 @@ map_container = st.empty()
 
 # Draw map
 map_container.pydeck_chart(pdk.Deck(
-    map_style='mapbox://styles/mapbox/light-v9',
+    map_style='mapbox://styles/mapbox/dark-v9',
     initial_view_state=pdk.ViewState(
         latitude=lat,
         longitude=lon,
@@ -50,3 +76,7 @@ map_container.pydeck_chart(pdk.Deck(
         if st.session_state[layer_name]
     ]
 ))
+
+stats = st.empty()
+
+st.text("Environ __ cyclistes par jour voyagent les rues de Montréal. ")

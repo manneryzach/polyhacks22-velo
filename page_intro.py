@@ -34,5 +34,6 @@ def show_page():
 
     st.write("Text here")
 
-
+    # _, col, _ = st.columns([1,1,1])
+    # col.button("Get started")
     return

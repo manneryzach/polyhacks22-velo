@@ -24,8 +24,10 @@ with open(data_path) as csvfile:
         coord = [float(row['longitude']),float(row['latitude'])]
         heure = int(row['heure'])
         date = row['date']
+        valeur = row['valeur']
+        color = [0, int(255-255*int(valeur)/100),0]
 
-        new_dict = {"station_id":station_id, "coordinates":coord}
+        new_dict = {"station_id":station_id, "coordinates":coord, "valeur":int(valeur),"color":color,}
 
         if ((last_date != date) and not_first):
             hour_dict[last_heure] = hour_array

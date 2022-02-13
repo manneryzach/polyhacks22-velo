@@ -138,7 +138,7 @@ def getLayer():
         "bixi_stations": bixi_stations_layer,
         "construction_layer": construction_layer,
         "bike_rack_layer":bike_racks_layer,
-        "air_quality_layer":layer_iqa_dict,
+        "air_quality_layer":layer_iqa_dict[dates[0]][heures[12]],
     }
     return layer_dict
 

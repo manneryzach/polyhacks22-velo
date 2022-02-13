@@ -49,7 +49,7 @@ map_container = st.empty()
 
 # Draw map
 map_container.pydeck_chart(pdk.Deck(
-    map_style='mapbox://styles/mapbox/dark-v9',
+    map_style='mapbox://styles/mapbox/navigation-night-v1',
     initial_view_state=pdk.ViewState(
         latitude=lat,
         longitude=lon,

@@ -3,6 +3,13 @@ from api_calls import *
 import page_intro
 import page_app
 
+st.set_page_config(
+    page_title="VéloViz",
+    page_icon="🚲",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 layer_select = st.sidebar.container()
 
 img = open('img/bike_cropped_2.svg').read()

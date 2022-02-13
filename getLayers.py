@@ -134,7 +134,7 @@ def getHeures():
 def getLayer():
     layer_dict = {
         "Pistes cyclables": normal_path_layer,
-        "Stations Bixi": bixi_stations_layer,
+        "Stations BIXI": bixi_stations_layer,
         "Rack à vélo":bike_racks_layer,
         "Zones de construction": construction_layer,
         "Qualité de l'air":layer_iqa_dict[dates[0]][heures[12]],

@@ -20,7 +20,7 @@ layer_select.markdown(img, unsafe_allow_html=True)
 if st.session_state.get('about', False):
     page_intro.show_page()
     _, col, _ = st.sidebar.columns([1,1,1])
-    col.button("Get Started")
+    col.button("Commencez l'application")
 else:
     page_app.show_page()
-    st.sidebar.button("About us", key='about')
+    st.sidebar.button("À propos de nous", key='about')

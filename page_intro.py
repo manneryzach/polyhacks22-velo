@@ -12,9 +12,9 @@ def show_page():
     
     col1, col2 = st.columns([2.5,1])
 
-    col1.markdown("<h2 style='text-align: left; color: #B71111;'>Qui nous sommes</h2>", unsafe_allow_html=True)
+    col1.markdown("<h2 style='text-align: left; color: #B71111;'>Pourquoi VéloViz?</h2>", unsafe_allow_html=True)
     col1.write("""
-        Selon Vélo Quebec, les Montréalais passent un total de 3 640 000 heures par semaine sur leurs vélos et 740 000 personnes les utilisent comme mode de transport. En temps que cyclistes, il est important de se questioner: Il y a-t-il moyen d'améliorer l'accessibilité ...?
+        Selon Vélo Quebec, les Montréalais passent un total de 3 640 000 heures par semaine sur leurs vélos et 740 000 personnes les utilisent comme mode de transport. Sachant ceci, nous voulions créer une application qui améliore l'accessibilité au cyclisme en région métropolitaine.
     """)
     
     image = Image.open('img/cool_biker.jpg')
@@ -22,16 +22,16 @@ def show_page():
     col2.image(image, width=400)
     
     col1, col2 = st.columns([2,4])
-    col2.markdown("<h2 style='text-align: left; color: #B71111;'>Comment fonctionne notre aplication</h2>", unsafe_allow_html=True)
-    col2.write("Text here")
+    col2.markdown("<h2 style='text-align: left; color: #B71111;'>Que fait notre application?</h2>", unsafe_allow_html=True)
+    col2.write("Notre application permet de facilement visualiser toutes les données importantes pour un(e) cycliste à Montréal, telles que les pistes cyclables, les zones de construction, les stations de BIXI et autres!")
 
     image = Image.open('img/finally.jpg')
     col1.header(" ")
     col1.image(image, width=400)
 
 
-    st.markdown("<h2 style='text-align: left; color: #B71111;'>Notre Futur</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: left; color: #B71111;'>L'avenir de VéloViz</h2>", unsafe_allow_html=True)
 
-    st.write("Text here")
+    st.write("Nous aimerions ajouter d'autres données importantes, telles que les vols par région ainsi que les zones propices à accidents. La touche finale serait de faire en sorte que nos données soient constamment mises à jour (real-time data).")
 
     return

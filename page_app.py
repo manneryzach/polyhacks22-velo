@@ -8,7 +8,7 @@ from getLayers import getLayer, getPointLayer
 
 
 def show_page():
-    st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>Montréal appartient-elle aux cyclistes?</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>Montréal appartient-il aux cyclistes?</h1>", unsafe_allow_html=True)
     layer_select = st.sidebar.container()
 
     layers = getLayer()
@@ -22,7 +22,7 @@ def show_page():
     # lat, lon = g.latlng
     lat, lon = 45.5017, -73.5673
 
-    query = st.sidebar.text_input('Search location:', value="--", key="query")
+    query = st.sidebar.text_input('Cherchez un endroit:', value="--", key="query")
 
     if query != "--":
         res = query_location(query, lat, lon)

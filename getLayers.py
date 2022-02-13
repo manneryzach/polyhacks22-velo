@@ -94,3 +94,22 @@ def getLayer():
         "bike_rack_layer":bike_racks_layer,
     }
     return layer_dict
+
+
+def getPointLayer(lon, lat):
+    return pdk.Layer(
+        "ScatterplotLayer",
+        [lon, lat],
+        pickable=True,
+        opacity=1,
+        stroked=True,
+        filled=True,
+        radius_scale=1,
+        radius_min_pixels=2,
+        radius_max_pixels=10,
+        line_width_min_pixels=0.5,
+        get_position="coordinates",
+        get_radius=1,
+        get_fill_color=[0, 255, 0],
+        get_line_color=[0, 0, 0],
+    )

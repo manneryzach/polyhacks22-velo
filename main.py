@@ -1,3 +1,4 @@
+from turtle import onclick
 import streamlit as st
 from api_calls import *
 import page_intro
@@ -9,17 +10,13 @@ layer_select = st.sidebar.container()
 img = open('img/bike.svg').read()
 layer_select.markdown(img, unsafe_allow_html=True)
 
-pages = {
-        "Introduction": page_intro,
-        "Bike info": page_app,
-    }
+if 'about' not in st.session_state:
+    st.session_state['about'] = False
 
-
-# Radio buttons to select desired option
-page = st.sidebar.radio("", tuple(pages.keys()))
-
-st.sidebar.title("Options")
-
-pages[page].show_page()
-
-st.sidebar.markdown(open("about.md").read())
+if st.session_state['about']:
+    page_intro.show_page()
+    _, col, _ = st.sidebar.columns([1,1,1])
+    col.button("Get Started")
+else:
+    page_app.show_page()
+    st.sidebar.button("About us", key='about')

@@ -11,9 +11,6 @@ def show_page():
     st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>Montréal appartient-elle aux cyclistes?</h1>", unsafe_allow_html=True)
     layer_select = st.sidebar.container()
 
-    # img = open('img/bike.svg').read()
-    # layer_select.markdown(img, unsafe_allow_html=True)
-
     layers = getLayer()
     with layer_select:
         '## What would you like to see?'
@@ -57,8 +54,4 @@ def show_page():
         ]
     ))
 
-    stats = st.empty()
-
-    st.text("Environ __ cyclistes par jour voyagent les rues de Montréal. ")
-    
     return

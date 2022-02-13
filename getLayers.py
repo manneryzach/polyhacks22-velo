@@ -99,7 +99,6 @@ def getLayer():
 def getPointLayer(lon, lat):
     return pdk.Layer(
         "ScatterplotLayer",
-        [lon, lat],
         pickable=True,
         opacity=1,
         stroked=True,
@@ -108,8 +107,8 @@ def getPointLayer(lon, lat):
         radius_min_pixels=2,
         radius_max_pixels=10,
         line_width_min_pixels=0.5,
-        get_position="coordinates",
+        get_position=[lon, lat],
         get_radius=1,
-        get_fill_color=[0, 255, 0],
+        get_fill_color=[0, 0, 255],
         get_line_color=[0, 0, 0],
     )

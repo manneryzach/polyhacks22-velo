@@ -1,5 +1,6 @@
 import pydeck as pdk
 import pandas as pd
+import json
 
 # Bixi Layer
 
@@ -85,6 +86,49 @@ construction_layer = pdk.Layer(
     get_width=1.5,
 )
 
+# Air Quality Layers
+
+air_quality_dict = json.load("./Data/air_quality.json")
+dates = air_quality_dict.keys()
+
+layer_iqa_dict = {}
+
+for key in air_quality_dict:
+
+    layer_hour_dict = {}
+    for h_key in air_quality_dict[key]:
+
+        temp_layer = pdk.Layer(
+            "ScatterplotLayer",
+            air_quality[date][heure],
+            pickable=True,
+            opacity=0.4,
+            stroked=True,
+            filled=True,
+            radius_scale=1,
+            radius_min_pixels=2,
+            radius_max_pixels=10,
+            line_width_min_pixels=0.5,
+            get_position="coordinates",
+            get_radius=40,
+            get_fill_color=[0, (255*"valeur"), 0],
+            get_line_color=[0, 0, 0],
+        )
+
+        layer_hour_dict[h_key] = temp_layer
+
+    layer_iqa_dict[key] = layer_hour_dict
+
+    heures = air_quality_dict[key].keys()
+
+# the main attraction
+
+def getDates():
+    return dates
+
+def getHeures():
+    return heures
+
 def getLayer():
     layer_dict = {
         "REV": rev_layer,
@@ -92,6 +136,7 @@ def getLayer():
         "bixi_stations": bixi_stations_layer,
         "construction_layer": construction_layer,
         "bike_rack_layer":bike_racks_layer,
+        "air_quality_layer":air_quality_dict,
     }
     return layer_dict
 

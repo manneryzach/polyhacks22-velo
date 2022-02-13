@@ -18,8 +18,9 @@ def show_page():
             st.checkbox(key, key=key)
 
     # Get user current location
-    g = geocoder.ip('me')
-    lat, lon = g.latlng
+    # g = geocoder.ip('me')
+    # lat, lon = g.latlng
+    lat, lon = 45.5017, -73.5673
 
     query = st.sidebar.text_input('Search location:', value="--", key="query")
 

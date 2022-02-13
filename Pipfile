@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 geocoder = "*"
 requests = "*"
-json = "*"
 
 [dev-packages]
 

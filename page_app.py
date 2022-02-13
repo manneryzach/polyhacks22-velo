@@ -4,7 +4,7 @@ import streamlit as st
 import pydeck as pdk
 import geocoder
 from api_calls import *
-from getLayers import getLayer
+from getLayers import getLayer, getPointLayer
 
 
 def show_page():
@@ -34,8 +34,8 @@ def show_page():
         [[lon, lat]] = res['center'].loc[res['place_name'] == query_options]
         
         # Add point  
-        st.session_state['location'] = True
-        # layers["location"] = getPointLayer(lon, lat)
+        # st.session_state['location'] = True
+        # layers["location"] = getPointLayer(lat, lon)
 
     map_container = st.empty()
 

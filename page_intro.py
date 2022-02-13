@@ -10,7 +10,7 @@ def show_page():
 
     st.markdown("<h1 style='text-align: center; color: #FF4B4B;'>VéloViz: Montréal sur Vélo!</h1>", unsafe_allow_html=True)
     
-    col1, col2 = st.columns([10,2])
+    col1, col2 = st.columns([2.5,1])
 
     col1.markdown("<h2 style='text-align: left; color: #B71111;'>Qui nous sommes</h2>", unsafe_allow_html=True)
     col1.write("""
@@ -27,7 +27,7 @@ def show_page():
 
     image = Image.open('img/finally.jpg')
     col1.header(" ")
-    col1.image(image, width=200)
+    col1.image(image, width=400)
 
 
     st.markdown("<h2 style='text-align: left; color: #B71111;'>Notre Futur</h2>", unsafe_allow_html=True)

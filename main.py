@@ -3,6 +3,8 @@ from api_calls import *
 import page_intro
 import page_app
 
+
+
 st.set_page_config(
     page_title="VéloViz",
     page_icon="🚲",

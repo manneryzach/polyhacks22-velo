@@ -88,48 +88,48 @@ construction_layer = pdk.Layer(
 
 # Air Quality Layers
 
-# air_quality_pd = pd.read_json("./Data/air_quality.json")
-# air_quality_dict = air_quality_pd.to_dict()
+air_quality_pd = pd.read_json("./Data/air_quality.json")
+air_quality_dict = air_quality_pd.to_dict()
 
-# dates = air_quality_dict.keys()
+dates = list(air_quality_dict.keys())
 
-# layer_iqa_dict = {}
+layer_iqa_dict = {}
 
-# for key in air_quality_dict:
+for key in air_quality_dict:
 
-#     layer_hour_dict = {}
-#     for h_key in air_quality_dict[key]:
+    layer_hour_dict = {}
+    for h_key in air_quality_dict[key]:
 
-#         temp_layer = pdk.Layer(
-#             "ScatterplotLayer",
-#             pd.DataFrame.from_dict(air_quality_dict[date][heure]),
-#             pickable=True,
-#             opacity=0.4,
-#             stroked=True,
-#             filled=True,
-#             radius_scale=1,
-#             radius_min_pixels=2,
-#             radius_max_pixels=10,
-#             line_width_min_pixels=0.5,
-#             get_position="coordinates",
-#             get_radius=40,
-#             get_fill_color=[0, (255*"valeur"), 0],
-#             get_line_color=[0, 0, 0],
-#         )
+        temp_layer = pdk.Layer(
+            "ScatterplotLayer",
+            air_quality_pd[key][h_key],
+            pickable=True,
+            opacity=0.4,
+            stroked=True,
+            filled=True,
+            radius_scale=10,
+            radius_min_pixels=50,
+            radius_max_pixels=100,
+            line_width_min_pixels=0.5,
+            get_position="coordinates",
+            get_radius=75,
+            get_fill_color="color",
+            get_line_color=[0, 0, 0],
+        )
 
-#         layer_hour_dict[h_key] = temp_layer
+        layer_hour_dict[h_key] = temp_layer
 
-#     layer_iqa_dict[key] = layer_hour_dict
+    layer_iqa_dict[key] = layer_hour_dict
 
-#     heures = air_quality_dict[key].keys()
+    heures = list(air_quality_dict[key].keys())
 
 # the main attraction
 
-# def getDates():
-#     return dates
+def getDates():
+    return dates
 
-# def getHeures():
-#     return heures
+def getHeures():
+    return heures
 
 def getLayer():
     layer_dict = {
@@ -138,7 +138,7 @@ def getLayer():
         "bixi_stations": bixi_stations_layer,
         "construction_layer": construction_layer,
         "bike_rack_layer":bike_racks_layer,
-        # "air_quality_layer":air_quality_dict,
+        "air_quality_layer":layer_iqa_dict,
     }
     return layer_dict
 
